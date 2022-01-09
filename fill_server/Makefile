@@ -31,7 +31,7 @@ $(VENV_NAME)/bin/activate: requirements.txt
 
 dev_venv: venv
 	@echo "***** Updating development dependencies..."
-	${PYTHON} -m pip install -r dev-requirements.txt
+	${PYTHON} -m pip install -r requirements-dev.txt
 
 run: venv
 	${PYTHON} $(RUN_SERVER_FILE)
