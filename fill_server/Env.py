@@ -13,7 +13,7 @@ class _Env(BaseSettings):
     SECRET: str = Field("change-me", description="secret for encoding and decoding JWT")
 
     CONTROLLER_SERVER_URL: AnyHttpUrl = Field(
-        "http://localhost:8000", description="Controller server address"
+        "http://localhost:8001", description="Controller server address"
     )
 
 

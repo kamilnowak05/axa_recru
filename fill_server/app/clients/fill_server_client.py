@@ -17,7 +17,7 @@ class _ControllerClient(BaseHttpClient):
         logger.debug("Sending trades to fill server...")
         error_msg = "Could not send request to fill server"
         path = Endpoints.trade
-        await self._request(Methods.POST, error_msg, path, json=data.dict())
+        await self._request(Methods.POST, error_msg, path, data=data.json())
 
 
 ControllerClient = _ControllerClient()
