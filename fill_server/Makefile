@@ -14,6 +14,8 @@ help:
 	@echo "    Create virtualenv and install dependencies"
 	@echo "* run"
 	@echo "    Start server"
+	@echo "* lint"
+	@echo "    Run python tools to check source code (mypy, isort, black)"
 
 
 venv: $(VENV_NAME)/bin/activate
@@ -26,5 +28,20 @@ $(VENV_NAME)/bin/activate: requirements.txt
 	${PYTHON} -m pip install -r requirements.txt
 	touch $(VENV_NAME)/bin/activate
 
+
+dev_venv: venv
+	@echo "***** Updating development dependencies..."
+	${PYTHON} -m pip install -r dev-requirements.txt
+
 run: venv
 	${PYTHON} $(RUN_SERVER_FILE)
+
+lint: dev_venv
+	@echo "***** Running mypy"
+	${PYTHON} -m mypy app
+	@echo "***** Running isort"
+	${PYTHON} -m isort app
+	@echo "***** Running black"
+	${PYTHON} -m black app
+	@echo "***** Running flake8"
+	${PYTHON} -m flake8 app

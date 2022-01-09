@@ -1,5 +1,4 @@
 import uvicorn
-
 from Env import Env
 
 if __name__ == "__main__":
