@@ -2,3 +2,4 @@ black==21.12b0
 isort==5.10.1
 mypy==0.931
 pylint==2.12.2
+flake8==4.0.1

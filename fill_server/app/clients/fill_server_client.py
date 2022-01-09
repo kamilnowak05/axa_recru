@@ -2,14 +2,14 @@ from loguru import logger
 
 from app.clients.base_client import BaseHttpClient, Methods
 from app.models import Trade
-from Env import Env
+from env import Env
 
 
 class Endpoints:
     trade = "/trade"
 
 
-class _ControllerClient(BaseHttpClient):
+class _ControllerServerClient(BaseHttpClient):
     def __init__(self) -> None:
         super().__init__(Env.CONTROLLER_SERVER_URL)
 
@@ -20,4 +20,4 @@ class _ControllerClient(BaseHttpClient):
         await self._request(Methods.POST, error_msg, path, data=data.json())
 
 
-ControllerClient = _ControllerClient()
+ControllerServerClient = _ControllerServerClient()

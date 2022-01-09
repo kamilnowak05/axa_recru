@@ -2,7 +2,7 @@ from datetime import datetime
 
 from jose import jwt
 
-from Env import Env
+from env import Env
 
 SERVICE_NAME: str = "fill_server"
 INTERNAL_TOKEN_HEADER: str = "x-internal-signature"

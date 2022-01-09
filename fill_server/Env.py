@@ -10,7 +10,7 @@ class _Env(BaseSettings):
 
     PORT: PositiveInt = Field(8002, description="Port of this server")
     HOST: str = Field("localhost", description="Host of this server")
-    SECRET: str = Field("change-me", description="secret for encoding and decoding JWT")
+    SECRET: str = Field("change-me", description="Secret for encoding and decoding JWT")
 
     CONTROLLER_SERVER_URL: AnyHttpUrl = Field(
         "http://localhost:8001", description="Controller server address"

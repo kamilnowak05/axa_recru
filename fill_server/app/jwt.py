@@ -4,8 +4,8 @@ from fastapi import HTTPException, status
 from jose import ExpiredSignatureError, JWTError, jwt
 from loguru import logger
 
-import Constants
-from Env import Env
+import constants
+from env import Env
 
 
 def decode_jwt(token: str, secret: str = Env.SECRET) -> Dict[str, Any]:
@@ -13,7 +13,7 @@ def decode_jwt(token: str, secret: str = Env.SECRET) -> Dict[str, Any]:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
     try:
-        return jwt.decode(token, secret, algorithms=Constants.JWT_ALGORITHM)
+        return jwt.decode(token, secret, algorithms=constants.JWT_ALGORITHM)
 
     except ExpiredSignatureError:
         logger.debug("Token is expired")

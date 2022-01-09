@@ -6,7 +6,7 @@ from httpx import AsyncClient, ConnectError, HTTPStatusError, Response, TimeoutE
 from loguru import logger
 from pydantic import AnyHttpUrl
 
-import Constants
+import constants
 
 
 class Methods(str, Enum):
@@ -25,9 +25,9 @@ class BaseHttpClient:
         method: Methods,
         error_msg: str,
         endpoint: str,
+        *args: Any,
         cookies: Optional[Dict] = None,
         headers: Optional[Dict] = None,
-        *args: Any,
         **kwargs: Any,
     ) -> Response:
         async with AsyncClient(base_url=self.base_url) as client:
@@ -35,7 +35,7 @@ class BaseHttpClient:
                 if not headers:
                     headers = {}
 
-                headers[Constants.INTERNAL_TOKEN_HEADER] = Constants.INTERNAL_JWT
+                headers[constants.INTERNAL_TOKEN_HEADER] = constants.INTERNAL_JWT
                 response = await client.request(
                     method.value,
                     endpoint,

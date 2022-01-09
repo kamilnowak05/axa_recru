@@ -38,10 +38,10 @@ run: venv
 
 lint: dev_venv
 	@echo "***** Running mypy"
-	${PYTHON} -m mypy app
+	${PYTHON} -m mypy ./
 	@echo "***** Running isort"
-	${PYTHON} -m isort app
+	${PYTHON} -m isort ./
 	@echo "***** Running black"
-	${PYTHON} -m black app
+	${PYTHON} -m black ./
 	@echo "***** Running flake8"
-	${PYTHON} -m flake8 app
+	${PYTHON} -m pylint ./app

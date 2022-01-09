@@ -4,16 +4,15 @@ from random import randrange
 
 from fastapi import FastAPI
 
-from app.clients.fill_server_client import ControllerClient
-from app.models import Trade, StockTickerEnum
+from app.clients.fill_server_client import ControllerServerClient
+from app.models import StockTickerEnum, Trade
 
 app = FastAPI()
-run: bool = True
 
 
 async def send_trade() -> None:
-    while run:
-        await ControllerClient.send_trades(
+    while True:
+        await ControllerServerClient.send_trades(
             Trade(
                 stock_ticker=StockTickerEnum.axa,
                 price=Decimal.from_float(randrange(0, 10000)),
@@ -26,9 +25,3 @@ async def send_trade() -> None:
 @app.on_event("startup")
 async def on_startup() -> None:
     await send_trade()
-
-
-@app.on_event("shutdown")
-async def on_shutdown() -> None:
-    global run
-    run = False

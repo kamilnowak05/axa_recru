@@ -11,7 +11,7 @@ exclude = '''
 
 [tool.isort]
 line_length = 120
-known_standard_library = 'decimal,enum,os,typing,datetime,random'
+known_standard_library = 'asyncio,decimal,enum,os,typing,datetime,random'
 known_third_party = 'fastapi,httpx,jose,pydantic,loguru'
 indent = '    '
 multi_line_output = 3
@@ -31,5 +31,7 @@ disable=[
     "no-name-in-module",
     "too-few-public-methods",
     "no-self-argument",
-    "import-outside-toplevel"
+    "import-outside-toplevel",
+    "raise-missing-from",
+    "too-many-arguments"
 ]
