@@ -11,7 +11,7 @@ app = FastAPI()
 
 
 async def send_trade() -> None:
-    while True:
+    for _ in range(25):
         await ControllerServerClient.send_trades(
             Trade(
                 stock_ticker=StockTickerEnum.axa,
