@@ -1,0 +1,12 @@
+# IDE files
+.idea/
+
+# virtual envs
+venv
+
+# env files
+.env
+
+# misc
+__pycache__
+.DS_Store
