@@ -1,8 +1,10 @@
 # IDE files
 .idea/
+/*/.idea/
 
 # virtual envs
 venv
+/*/venv/
 
 # env files
 .env
