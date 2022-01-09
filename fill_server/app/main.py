@@ -4,7 +4,7 @@ from random import randrange
 
 from fastapi import FastAPI
 
-from app.clients.fill_server_client import ControllerServerClient
+from app.clients.controller_server_client import ControllerServerClient
 from app.models import StockTickerEnum, Trade
 
 app = FastAPI()

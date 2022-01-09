@@ -43,5 +43,5 @@ lint: dev_venv
 	${PYTHON} -m isort ./
 	@echo "***** Running black"
 	${PYTHON} -m black ./
-	@echo "***** Running flake8"
+	@echo "***** Running pylint"
 	${PYTHON} -m pylint ./app
