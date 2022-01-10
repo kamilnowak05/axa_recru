@@ -10,6 +10,7 @@ class _Env(BaseSettings):
 
     PORT: PositiveInt = Field(8003, description="Port of this server")
     HOST: str = Field("localhost", description="host of this server")
+    SECRET: str = Field("change-me", description="Secret for encoding and decoding JWT")
 
 
 Env = _Env()

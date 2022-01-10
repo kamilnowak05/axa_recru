@@ -3,7 +3,6 @@ from random import randrange
 from typing import List
 
 from fastapi import FastAPI
-from loguru import logger
 
 from app.clients.controller_server_client import ControllerServerClient
 from app.models import Account
@@ -25,7 +24,6 @@ async def send_splits() -> None:
             if sum(account.value for account in accounts) != 100:
                 continue
 
-            logger.warning(f"sum: {sum(account.value for account in accounts)}")
             break
         await ControllerServerClient.send_splits(
             {account.name: account.value for account in accounts}

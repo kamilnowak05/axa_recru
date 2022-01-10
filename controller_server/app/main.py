@@ -1,9 +1,10 @@
 import asyncio
 from typing import Dict, List
 
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, status, Depends
 
 from app.clients.position_server_client import PositionServerClient
+from app.jwt import decode_jwt
 from app.models import Account, Trade
 
 app = FastAPI()
@@ -36,12 +37,12 @@ async def send_positions(accounts: List[Account]) -> None:
     await PositionServerClient.send_positions(positions)
 
 
-@app.post("/trade", status_code=status.HTTP_200_OK)
+@app.post("/trade", dependencies=[Depends(decode_jwt)], status_code=status.HTTP_200_OK)
 async def fill_trade(data: Trade) -> None:
     TRADES.append(data)
 
 
-@app.post("/split", status_code=status.HTTP_200_OK)
+@app.post("/split", dependencies=[Depends(decode_jwt)], status_code=status.HTTP_200_OK)
 async def split_to_accounts(data: Dict[str, int]) -> None:
     accounts: List[Account] = []
     for name, value in data.items():
