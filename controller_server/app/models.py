@@ -20,4 +20,9 @@ class StockTickerEnum(Enum):
 class Trade(BaseModel):
     stock_ticker: StockTickerEnum
     price: Decimal
-    quantity: float
+    quantity: int
+
+
+class Account(BaseModel):
+    name: str
+    value: int

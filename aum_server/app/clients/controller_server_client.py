@@ -18,6 +18,7 @@ class _ControllerServerClient(BaseHttpClient):
         logger.debug("Sending splits to controller server...")
         error_msg = "Could not send request to controller server"
         path = Endpoints.trade
+        logger.error(f"Data {data}")
         await self._request(Methods.POST, error_msg, path, json=data)
 
 
